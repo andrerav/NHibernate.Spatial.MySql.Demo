@@ -1,0 +1,1 @@
+GeoJSON retrieved from http://norgeskart.no/json/norge/
