@@ -13,13 +13,14 @@ namespace DemoQueryUtil
 	{
 		static void Main(string[] args)
 		{
-			// Works, but Area is null
+			FluentConfiguration.Configure();
+
+			// Works, but Area is always null
 			var county = SessionManager.Session.Query<County>().First();
 
-			// Crashes
+			// Crashes with the error "No persister for: GeoAPI.Geometries.IGeometry"
 			var municipalities = SessionManager.Session.Query<Municipality>()
 										.Where(m => m.Area.Within(county.Area)).ToList();
-
 		}
 	}
 }
