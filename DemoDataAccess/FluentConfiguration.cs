@@ -21,9 +21,7 @@ namespace DemoDataAccess
 				.Database(FluentNHibernate.Cfg.Db.MySQLConfiguration.Standard
 				.ConnectionString(c => c.FromConnectionStringWithKey("MySQL"))
 				.Driver<MySqlDataDriver>()
-				.ShowSql()
-				//.Dialect("NHibernate.Spatial.Dialect.MySQLSpatialDialect ,NHibernate.Spatial.MySQL"))
-				.Dialect<MySQLSpatialDialect>())
+				.Dialect<MySQL57SpatialDialect>())
 				.Mappings(x => x.FluentMappings.AddFromAssemblyOf<MunicipalityMap>())
 				.BuildConfiguration();
 

@@ -15,7 +15,7 @@ namespace DemoDataAccess.Entity
 		public virtual County County { get; set; }
 		public virtual string Name { get; set; }
 		public virtual int MunicipalityNo { get; set; }
-		public virtual IGeometry Area { get; set; }
+		public virtual IGeometry Geom { get; set; }
 	}
 
 	public class MunicipalityMap : ClassMap<Municipality>
@@ -26,7 +26,7 @@ namespace DemoDataAccess.Entity
 			Id(x => x.Id);
 			Map(x => x.Name);
 			Map(x => x.MunicipalityNo);
-			Map(x => x.Area).CustomType<MySQLGeometryType>();
+            Map(x => x.Geom).CustomType<MySQL57GeometryType>();
 			References(x => x.County).Nullable();
 		}
 	}
@@ -36,7 +36,7 @@ namespace DemoDataAccess.Entity
 		public virtual int Id { get; set; }
 		public virtual string Name { get; set; }
 		public virtual int CountyNo { get; set; }
-		public virtual IGeometry Area { get; set; }
+		public virtual IGeometry Geom { get; set; }
 		public virtual List<Municipality> Municipalities { get; set; }
 
 	}
@@ -49,7 +49,7 @@ namespace DemoDataAccess.Entity
 			Id(x => x.Id);
 			Map(x => x.Name);
 			Map(x => x.CountyNo);
-			Map(x => x.Area).CustomType<MySQLGeometryType>();
+			Map(x => x.Geom).CustomType<MySQL57GeometryType>();
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using DemoDataAccess;
 using DemoDataAccess.Entity;
 using GeoAPI.Geometries;
+using log4net.Config;
 using NetTopologySuite.Features;
 using NetTopologySuite.IO;
 using Newtonsoft.Json.Linq;
@@ -16,10 +17,10 @@ namespace DemoDataImport
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static void Main()
 		{
-
-			FluentConfiguration.Configure(generateTables: true);
+            XmlConfigurator.Configure();
+            FluentConfiguration.Configure(generateTables: true);
 			SessionManager.Session.Transaction.Begin();
 			ImportMunicipalities();
 			ImportCounties();
@@ -31,14 +32,14 @@ namespace DemoDataImport
 		{
 			var countyFeatureCollection = new GeoJsonReader()
 							.Read<FeatureCollection>(
-								File.ReadAllText("./../../GeoData/fylker2.json")
+								File.ReadAllText("./../../GeoData/fylker.json")
 							);
 
 
 			foreach (var feature in countyFeatureCollection.Features)
 			{
 				var county = new County();
-				county.Area = feature.Geometry;
+				county.Geom = feature.Geometry;
 				county.Name = feature.Attributes["NAVN"].ToString();
 				county.CountyNo = Int32.Parse(feature.Attributes["FylkeNr"].ToString());
 				SessionManager.Session.SaveOrUpdate(county);
@@ -49,12 +50,12 @@ namespace DemoDataImport
 		{
 			var municipalityFeatureCollection = new GeoJsonReader()
 										.Read<FeatureCollection>(
-											File.ReadAllText("./../../GeoData/kommuner2.json")
+											File.ReadAllText("./../../GeoData/kommuner.json")
 										);
 			foreach (var feature in municipalityFeatureCollection.Features)
 			{
 				var municipality = new Municipality();
-				municipality.Area = feature.Geometry;
+				municipality.Geom = feature.Geometry;
 				municipality.Name = feature.Attributes["NAVN"].ToString();
 				municipality.MunicipalityNo = Int32.Parse(feature.Attributes["KOMM"].ToString());
 				SessionManager.Session.SaveOrUpdate(municipality);

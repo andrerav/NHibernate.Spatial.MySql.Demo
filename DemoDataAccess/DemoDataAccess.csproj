@@ -42,6 +42,10 @@
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NetTopologySuite, Version=1.14.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
       <HintPath>..\packages\NetTopologySuite.1.14\lib\net45\NetTopologySuite.dll</HintPath>
       <Private>True</Private>
@@ -74,12 +78,12 @@
       <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NHibernate.Spatial, Version=4.0.4.4001, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4001\lib\net40-Client\NHibernate.Spatial.dll</HintPath>
+    <Reference Include="NHibernate.Spatial, Version=4.0.4.4002, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4002-beta\lib\net40-Client\NHibernate.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NHibernate.Spatial.MySQL, Version=4.0.4.4001, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4001\lib\net40-Client\NHibernate.Spatial.MySQL.dll</HintPath>
+    <Reference Include="NHibernate.Spatial.MySQL, Version=4.0.4.4002, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4002-beta\lib\net40-Client\NHibernate.Spatial.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2573bf8a1bdddcd5, processorArchitecture=MSIL">
@@ -101,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
