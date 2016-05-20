@@ -40,6 +40,7 @@ namespace DemoDataImport
 			{
 				var county = new County();
 				county.Geom = feature.Geometry;
+			    county.Geom.SRID = 4326;
 				county.Name = feature.Attributes["NAVN"].ToString();
 				county.CountyNo = Int32.Parse(feature.Attributes["FylkeNr"].ToString());
 				SessionManager.Session.SaveOrUpdate(county);
@@ -56,7 +57,8 @@ namespace DemoDataImport
 			{
 				var municipality = new Municipality();
 				municipality.Geom = feature.Geometry;
-				municipality.Name = feature.Attributes["NAVN"].ToString();
+                municipality.Geom.SRID = 4326;
+                municipality.Name = feature.Attributes["NAVN"].ToString();
 				municipality.MunicipalityNo = Int32.Parse(feature.Attributes["KOMM"].ToString());
 				SessionManager.Session.SaveOrUpdate(municipality);
 			}

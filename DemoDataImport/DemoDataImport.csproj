@@ -90,11 +90,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NHibernate.Spatial, Version=4.0.4.4002, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4002-beta\lib\net40-Client\NHibernate.Spatial.dll</HintPath>
+      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4002-beta3\lib\net40-Client\NHibernate.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NHibernate.Spatial.MySQL, Version=4.0.4.4002, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4002-beta\lib\net40-Client\NHibernate.Spatial.MySQL.dll</HintPath>
+      <HintPath>..\packages\NHibernate.Spatial.MySQL.4.0.4.4002-beta3\lib\net40-Client\NHibernate.Spatial.MySQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2573bf8a1bdddcd5, processorArchitecture=MSIL">
@@ -122,7 +122,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DemoDataAccess\DemoDataAccess.csproj">
