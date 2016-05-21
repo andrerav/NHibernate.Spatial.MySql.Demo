@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			width: 100%;
+			height: 600px;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+		</footer>
+	</div>
+	
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jqueryui")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+	<script>
+	  var map;
+	  function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+			center: { lat: 63.444772, lng: 10.445565 },
+		  zoom: 4
+		});
+
+		map.data.loadGeoJson('api/MunicipalityJson');
+
+		  map.data.addListener('click',
+			  function(event) {
+				  var county = $.getJSON("api/CountyJson/" + event.feature.getProperty('Id'),
+					  function(data) {
+						  $('<div id="dialog" title="Municipality"><p>Name: ' +
+								  event.feature.getProperty('Name') +
+								  '</p><p>County: ' +
+								  data.properties.Name +
+								  '</p></div>')
+							  .dialog();
+					  });
+			  });
+	  }
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH1WYijkjRUhEBW1lT59pPiBh9laDbTW4&callback=initMap"
+			async defer></script>
+</body>
+</html>

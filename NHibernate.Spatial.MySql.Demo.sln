@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoDataImport", "DemoDataI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoQueryUtil", "DemoQueryUtil\DemoQueryUtil.csproj", "{F81D06CB-B030-482F-AB86-EE99F9BF891F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWebUI", "DemoWebUI\DemoWebUI.csproj", "{1AC2EF51-9331-481F-AF16-EFFF88AD8185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F81D06CB-B030-482F-AB86-EE99F9BF891F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F81D06CB-B030-482F-AB86-EE99F9BF891F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F81D06CB-B030-482F-AB86-EE99F9BF891F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC2EF51-9331-481F-AF16-EFFF88AD8185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC2EF51-9331-481F-AF16-EFFF88AD8185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC2EF51-9331-481F-AF16-EFFF88AD8185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC2EF51-9331-481F-AF16-EFFF88AD8185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

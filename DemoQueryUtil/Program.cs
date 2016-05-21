@@ -17,7 +17,7 @@ namespace DemoQueryUtil
 	{
 		static void Main()
 		{
-			// Log4net configuration
+			// Log4net configuration -- uncomment this to see NHibernate diagnostic logs
 			// XmlConfigurator.Configure();
 
 			// NHibernate configuration
@@ -25,7 +25,7 @@ namespace DemoQueryUtil
 
 			var session = SessionManager.Session;
 
-			#region Stuff
+			#region Spatial Analysis Queries
 			//var result =
 			//    (from county in session.Query<County>()
 			//     from municipality in session.Query<Municipality>()
