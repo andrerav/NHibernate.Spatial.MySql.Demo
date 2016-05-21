@@ -15,8 +15,14 @@ namespace DemoDataAccess
 {
 	public static class FluentConfiguration
 	{
-		public static void Configure(string connectionStringKey = "MySQL", bool generateTables = false)
+		public static void Configure(string connectionStringKey = null, bool generateTables = false)
 		{
+
+			if (string.IsNullOrWhiteSpace(connectionStringKey))
+			{
+				connectionStringKey = System.Configuration.ConfigurationManager.AppSettings["DefaultConnectionStringKey"] ?? "MySQL";
+			}
+
 			var cfg = Fluently.Configure()
 				.Database(FluentNHibernate.Cfg.Db.MySQLConfiguration.Standard
 				.ConnectionString(c => c.FromConnectionStringWithKey(connectionStringKey))

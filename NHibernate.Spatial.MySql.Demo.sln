@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoQueryUtil", "DemoQueryU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWebUI", "DemoWebUI\DemoWebUI.csproj", "{1AC2EF51-9331-481F-AF16-EFFF88AD8185}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{9EDEDFAA-F257-49B9-89FC-77603F674345}"
+	ProjectSection(SolutionItems) = preProject
+		CommonAppSettings.config = CommonAppSettings.config
+		ConnectionStrings.config = ConnectionStrings.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
