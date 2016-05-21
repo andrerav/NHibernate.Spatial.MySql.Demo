@@ -15,11 +15,11 @@ namespace DemoDataAccess
 {
 	public static class FluentConfiguration
 	{
-		public static void Configure(bool generateTables = false)
+		public static void Configure(string connectionStringKey = "MySQL", bool generateTables = false)
 		{
 			var cfg = Fluently.Configure()
 				.Database(FluentNHibernate.Cfg.Db.MySQLConfiguration.Standard
-				.ConnectionString(c => c.FromConnectionStringWithKey("MySQL"))
+				.ConnectionString(c => c.FromConnectionStringWithKey(connectionStringKey))
 				.Driver<MySqlDataDriver>()
 				.Dialect<MySQL57SpatialDialect>())
 				.Mappings(x => x.FluentMappings.AddFromAssemblyOf<MunicipalityMap>())

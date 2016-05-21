@@ -50,7 +50,6 @@
 			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
 		</footer>
 	</div>
-	
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/jqueryui")
 	@Scripts.Render("~/bundles/bootstrap")
@@ -60,14 +59,14 @@
 	  function initMap() {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: { lat: 63.444772, lng: 10.445565 },
-		  zoom: 4
+			zoom: 4
 		});
 
 		map.data.loadGeoJson('api/MunicipalityJson');
 
 		  map.data.addListener('click',
 			  function(event) {
-				  var county = $.getJSON("api/CountyJson/" + event.feature.getProperty('Id'),
+			  	var county = $.getJSON("api/MunicipalityJson/GetCounty/" + event.feature.getProperty('Id'),
 					  function(data) {
 						  $('<div id="dialog" title="Municipality"><p>Name: ' +
 								  event.feature.getProperty('Name') +

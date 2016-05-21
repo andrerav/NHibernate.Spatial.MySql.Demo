@@ -50,18 +50,13 @@ namespace DemoWebUI.Api
 			var session = SessionManager.Session;
 			var county =
 				(from c in session.Query<County>()
-					from m in session.Query<Municipality>()
-					where m.Id == id && m.Geom.Within(c.Geom.Buffer(0.000001))
-					select c)
+				 from m in session.Query<Municipality>()
+				 where m.Id == id
+				 orderby m.Geom.Centroid.Distance(c.Geom) ascending 
+				 select c)
+					.Take(1)
 					.ToList()
 					.FirstOrDefault();
-
-
-			var result =
-				(from c2 in session.Query<County>()
-				 from municipality in session.Query<Municipality>()
-				 where municipality.Geom.Within(c2.Geom.Buffer(0.000001)) && municipality.Id == id
-				 select c2).ToList().FirstOrDefault();
 
 			var feature = new Feature
 			{
