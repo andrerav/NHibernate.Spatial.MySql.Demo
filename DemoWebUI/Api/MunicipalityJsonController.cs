@@ -14,7 +14,10 @@ namespace DemoWebUI.Api
 {
 	public class MunicipalityJsonController : JsonController
 	{
-		// GET api/<controller>
+		/// <summary>
+		/// Returns a list of municipalities in GeoJSON format
+		/// </summary>
+		/// <returns></returns>
 		public HttpResponseMessage Get()
 		{
 			var session = SessionManager.Session;
@@ -28,12 +31,13 @@ namespace DemoWebUI.Api
 				var feature = new Feature
 				{
 					Geometry = municipality.Geom,
-					Attributes = new AttributesTable()
+					Attributes = new AttributesTable(),
 				};
 
-				feature.Attributes.AddAttribute("Id", municipality.Id);
-				feature.Attributes.AddAttribute("Name", municipality.Name);
-				feature.Attributes.AddAttribute("No", municipality.MunicipalityNo);
+				feature.Attributes.AddAttribute("id", municipality.Id);
+				feature.Attributes.AddAttribute("name", municipality.Name);
+				feature.Attributes.AddAttribute("no", municipality.MunicipalityNo);
+				feature.Attributes.AddAttribute("type", "municipality");
 
 				collection.Add(feature);
 			}
@@ -44,7 +48,11 @@ namespace DemoWebUI.Api
 			return Response(sw.ToString());
 		}
 
-		// TODO: Make this work
+		/// <summary>
+		/// Returns the county closes to the given municipality
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		public HttpResponseMessage GetCounty(int id)
 		{
 			var session = SessionManager.Session;
@@ -64,30 +72,15 @@ namespace DemoWebUI.Api
 				Attributes = new AttributesTable()
 			};
 
-			feature.Attributes.AddAttribute("Id", county.Id);
-			feature.Attributes.AddAttribute("Name", county.Name);
-			feature.Attributes.AddAttribute("No", county.CountyNo);
+			feature.Attributes.AddAttribute("id", county.Id);
+			feature.Attributes.AddAttribute("name", county.Name);
+			feature.Attributes.AddAttribute("no", county.CountyNo);
+			feature.Attributes.AddAttribute("type", "county");
 
 			var jsonSerializer = new GeoJsonSerializer();
 			var sw = new StringWriter();
 			jsonSerializer.Serialize(sw, feature);
 			return Response(sw.ToString());
-		}
-
-
-		// POST api/<controller>
-		public void Post([FromBody]string value)
-		{
-		}
-
-		// PUT api/<controller>/5
-		public void Put(int id, [FromBody]string value)
-		{
-		}
-
-		// DELETE api/<controller>/5
-		public void Delete(int id)
-		{
 		}
 	}
 }

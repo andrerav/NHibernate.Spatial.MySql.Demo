@@ -44,10 +44,11 @@
 		</div>
 	</div>
 	<div class="container body-content">
+		<div style="height: 50px"></div>
 		@RenderBody()
 		<hr />
 		<footer>
-			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+			<p>&copy; @DateTime.Now.Year - NHibernate.Spatial</p>
 		</footer>
 	</div>
 	@Scripts.Render("~/bundles/jquery")
@@ -62,20 +63,31 @@
 			zoom: 4
 		});
 
-		map.data.loadGeoJson('api/MunicipalityJson');
+		//map.data.loadGeoJson('api/MunicipalityJson');
 
-		  map.data.addListener('click',
-			  function(event) {
-			  	var county = $.getJSON("api/MunicipalityJson/GetCounty/" + event.feature.getProperty('Id'),
-					  function(data) {
-						  $('<div id="dialog" title="Municipality"><p>Name: ' +
-								  event.feature.getProperty('Name') +
-								  '</p><p>County: ' +
-								  data.properties.Name +
-								  '</p></div>')
-							  .dialog();
-					  });
-			  });
+		//map.data.addListener('click',
+		//	function (event) {
+
+		//		if (event.feature.getProperty("type") != "municipality") {
+		//			return;
+		//		}
+
+		//		$.getJSON("api/MunicipalityJson/GetCounty/" + event.feature.getProperty('id'),
+		//			function (countyGeoJson) {
+		//				countyGeoJson.id = countyGeoJson.properties.id;
+
+		//				$('<div id="dialog" title="Municipality"><p>Name: ' +
+		//					event.feature.getProperty("name") +
+		//					'</p><p>County: ' +
+		//					countyGeoJson.properties.name +
+		//					'</p></div>')
+		//				.dialog();
+
+		//				//if (map.data.getFeatureById(countyGeoJson.id) == undefined) {
+		//				//	map.data.addGeoJson(countyGeoJson);
+		//				//}
+		//			});
+		//	});
 	  }
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH1WYijkjRUhEBW1lT59pPiBh9laDbTW4&callback=initMap"
